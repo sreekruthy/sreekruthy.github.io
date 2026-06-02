@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FinDebate</title>
+<style>
+:root{--bg:#0a0c0f;--bg2:#0f1318;--bg3:#141920;--border:rgba(255,255,255,.09);--text:#e8eaed;--muted:#9aa0ab;--dim:#5c6370;--gold:#c8a96e;--gold2:#e8c98a;--teal:#4ecdc4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.7}
+.container{max-width:900px;margin:auto;padding:70px 24px}
+header{text-align:center}
+.tag{display:inline-block;border:1px solid rgba(200,169,110,.35);color:var(--gold);font:12px Courier,monospace;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;margin-bottom:26px}
+h1{font-family:Arial,sans-serif;font-size:clamp(32px,6vw,52px);line-height:1.12;margin-bottom:14px}
+h1 span,.stat-num{background:linear-gradient(135deg,var(--gold),var(--gold2),var(--teal));-webkit-background-clip:text;color:transparent}
+.subtitle{font-family:Arial,sans-serif;color:var(--muted);font-size:18px}
+.institution{font:12px Courier,monospace;color:var(--dim);letter-spacing:.08em;margin:12px 0 34px}
+.buttons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:58px}
+.btn{font:13px Courier,monospace;text-decoration:none;color:var(--text);background:var(--bg3);border:1px solid var(--border);padding:10px 18px;border-radius:5px}
+.btn:first-child{background:var(--gold);color:#0a0c0f;border-color:var(--gold)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin-bottom:54px}
+section{margin-bottom:58px}
+.label{font:12px Courier,monospace;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+h2{font-family:Arial,sans-serif;font-size:27px;margin-bottom:14px}
+p{color:var(--muted);font-size:18px;margin-bottom:16px}
+strong{color:var(--text)}
+.stats,.agents{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:26px}
+.card,.agent{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:18px}
+.stat-num{font-family:Arial,sans-serif;font-size:34px;font-weight:800;line-height:1}
+.stat-label,.agent-name{font:12px Courier,monospace;text-transform:uppercase;letter-spacing:.06em;margin-top:8px;color:var(--text)}
+.stat-desc,.agent-desc{color:var(--muted);font-size:14px;margin-top:5px}
+.pipeline{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin:24px 0}
+.step{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:12px 14px;font:12px Courier,monospace;color:var(--muted)}
+.arrow{color:var(--gold);font-size:20px}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:7px;margin-top:24px}
+table{width:100%;border-collapse:collapse;font:13px Courier,monospace}
+th,td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.05)}
+th{background:var(--bg3);color:var(--muted);text-transform:uppercase;font-size:11px;text-align:left}
+td:not(:first-child),th:not(:first-child){text-align:center}
+tr:last-child td{border-bottom:0}
+.best{color:var(--gold);font-weight:bold}
+.gain{color:var(--teal);font-weight:bold}
+footer{border-top:1px solid var(--border);padding-top:28px;color:var(--dim);font:12px Courier,monospace;text-align:center}
+@media(max-width:650px){.container{padding-top:48px}.pipeline{flex-direction:column}.arrow{transform:rotate(90deg)}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="tag">Research Project · Team 17</div>
+<h1>FinDebate: <span>Multi-Agent Collaborative Intelligence for Financial Analysis</span></h1>
+<div class="subtitle">Retrieval-Augmented Multi-Agent Framework for Institutional Financial Reasoning</div>
+<div class="institution">Department of Computer Science · Mahindra University</div>
+<div class="buttons">
+<a class="btn" href="https://arxiv.org/pdf/2509.17395">Paper</a>
+<a class="btn" href="https://github.com/sreekruthy/findebate">Code</a>
+<a class="btn" href="https://github.com/sreekruthy/findebate/blob/main/RAG/Earnings2Insights.zip">Dataset</a>
+<a class="btn" href="https://drive.google.com/file/d/1qP8cnoZtogfcxjuIbVJvX-OSeIPxppN2/view?usp=sharing">Demo</a>
+<a class="btn" href="#">Slides</a>
+<a class="btn" href="https://www.overleaf.com/read/vgqwmfpgzdvs#751e4c">Report</a>
+</div>
+</header>
+
+<div class="divider"></div>
+
+<section>
+<div class="label">Overview</div>
+<h2>Abstract</h2>
+<p>FinDebate is a retrieval-augmented multi-agent framework designed for institutional-style financial analysis from earnings call transcripts. The system combines domain-specific retrieval, specialized financial analyst agents, and a collaborative debate mechanism to improve report quality, factual grounding, and investment consistency.</p>
+<p>Evaluated on 64 Earnings2Insights transcripts across five large language models, FinDebate achieves consistent improvements averaging approximately <strong>+0.14 score points</strong> over zero-shot baselines on a four-point evaluation scale.</p>
+<div class="stats">
+<div class="card"><div class="stat-num">64</div><div class="stat-label">ECTSum transcripts</div><div class="stat-desc">Earnings calls used for evaluation</div></div>
+<div class="card"><div class="stat-num">7,265</div><div class="stat-label">Indexed chunks</div><div class="stat-desc">6,963 ECTSum + 302 Apple/Tesla</div></div>
+<div class="card"><div class="stat-num">5</div><div class="stat-label">Specialist agents</div><div class="stat-desc">Earnings · Market · Sentiment · Valuation · Risk</div></div>
+<div class="card"><div class="stat-num">+0.14</div><div class="stat-label">Average gain</div><div class="stat-desc">Over zero-shot baselines</div></div>
+</div>
+</section>
+
+<section>
+<div class="label">Architecture</div>
+<h2>Pipeline overview</h2>
+<p>A multi-stage financial reasoning pipeline from domain-specific retrieval through collaborative multi-agent analysis, debate refinement, and institutional evaluation.</p>
+<div class="pipeline">
+<div class="step">RAG retrieval</div><div class="arrow">›</div>
+<div class="step">Agent analysis</div><div class="arrow">›</div>
+<div class="step">Debate round</div><div class="arrow">›</div>
+<div class="step">Synthesis</div><div class="arrow">›</div>
+<div class="step">Report</div>
+</div>
+<div class="agents">
+<div class="agent"><div class="agent-name">Earnings analyst</div><div class="agent-desc">Revenue, profitability, EPS trends</div></div>
+<div class="agent"><div class="agent-name">Market predictor</div><div class="agent-desc">1-day, 1-week, 1-month forecasts</div></div>
+<div class="agent"><div class="agent-name">Sentiment analyst</div><div class="agent-desc">Management tone and behavioral finance</div></div>
+<div class="agent"><div class="agent-name">Valuation analyst</div><div class="agent-desc">DCF valuation and fair value</div></div>
+<div class="agent"><div class="agent-name">Risk analyst</div><div class="agent-desc">Credit, liquidity and market risk</div></div>
+</div>
+</section>
+
+<section>
+<div class="label">Evaluation</div>
+<h2>Benchmark results</h2>
+<p>FinDebate consistently improves financial report quality across all base models, with gains from +0.10 to +0.23 on the four-point scale.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Model</th><th>Zero-shot</th><th>RAG</th><th>Multi-agent</th><th>FinDebate</th><th>Gain</th></tr></thead>
+<tbody>
+<tr><td>Gemini 2.5 Flash</td><td>3.57</td><td>3.49</td><td>3.70</td><td class="best">3.70</td><td class="gain">+0.13</td></tr>
+<tr><td>Llama 4 Maverick</td><td>3.55</td><td>3.49</td><td>3.68</td><td class="best">3.69</td><td class="gain">+0.14</td></tr>
+<tr><td>DeepSeek-R1</td><td>3.63</td><td>3.51</td><td>3.70</td><td class="best">3.74</td><td class="gain">+0.11</td></tr>
+<tr><td>Claude Sonnet 4</td><td>3.50</td><td>3.55</td><td>3.70</td><td class="best">3.73</td><td class="gain">+0.23</td></tr>
+<tr><td>GPT-4o / Gemini-Pro</td><td>3.61</td><td>3.49</td><td>3.73</td><td class="best">3.71</td><td class="gain">+0.10</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<footer>FinDebate · Mahindra University · 2026</footer>
+</div>
+</body>
+</html>
